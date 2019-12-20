@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var eraseEvents = require('./routes/eraseEvents');
 var events = require('./routes/events');
 var actor = require('./routes/actor');
+var repo = require('./routes/repo');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/', index);
 app.use('/erase', eraseEvents);
 app.use('/events', events);
 app.use('/actors', actor);
+app.use('/repo', repo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,5 +49,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// connect to NeDB database
+
 
 module.exports = app;
